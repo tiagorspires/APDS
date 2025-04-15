@@ -1,0 +1,7 @@
+        Logger loggerFile = new Logger(Device.FILE);
+        Logger logStdErr = new Logger(Device.STDERR);
+        Logger loggerTCP = new Logger(Device.TCP_PORT);
+
+        loggerFile.log(Level.FATAL, "Fatal Error");
+        logStdErr.log(Level.ERRO, "Problem Detected");
+        loggerTCP.log(Level.ALERTA, "Problem Sent by TCP");

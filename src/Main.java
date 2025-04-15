@@ -1,18 +1,7 @@
-//import Singleton.Singleton;
-import Repository.*;
 
 public class Main {
     public static void main(String[] args) {
-        PoolConnections pool = new PoolConnections(3);
 
-        String[] users = {"John", "Jane", "Jack", "Bob"};
 
-        for (String user : users) {
-            Connection connection = pool.getConnection();
-            if (connection != null) {
-                connection.use(user);;
-                //pool.disconnect(connection);
-            }
-        }
     }
 }
