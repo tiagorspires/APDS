@@ -1,0 +1,57 @@
+import Reflection.*;
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) throws Exception {
+        // Parte 1 - POO
+        System.out.println("==== Demonstração de POO ====");
+        Animal cachorro = new Cachorro("Rex", 5);
+        Animal gato = new Gato("Mimi", 3);
+
+        Dono dono = new Dono("João", cachorro);
+        dono.interagirComAnimal();
+
+        dono = new Dono("Maria", gato);
+        dono.interagirComAnimal();
+
+        // Parte 2 - Reflexão
+        System.out.println("\n==== Demonstração de Reflexão ====");
+        ReflexaoUtil.mostrarDefinicoesClasse(Cachorro.class);
+        ReflexaoUtil.mostrarConstrutores(Cachorro.class);
+        ReflexaoUtil.mostrarMetodos(Cachorro.class);
+
+        // Executar método
+        System.out.println("\nExecutando método emitirSom com reflexão:");
+        ReflexaoUtil.executarMetodo(cachorro, "emitirSom");
+
+        // Alterar atributo
+        System.out.println("\nAlterando o nome do cachorro via reflexão:");
+        ReflexaoUtil.alterarAtributo(cachorro, "nome", "Toby");
+        System.out.println("Novo nome: " + cachorro.getNome());
+
+        // Instanciar classe dinamicamente
+        System.out.println("\nInstanciando novo Gato via nome da classe:");
+        Animal novoGato = (Animal) ReflexaoUtil.instanciarClasse("Reflection.Gato", "Luna", 2);
+        ReflexaoUtil.executarMetodo(novoGato, "emitirSom");
+
+        // Execução dinâmica com input do usuário
+        Scanner sc = new Scanner(System.in);
+        System.out.println("\n==== Execução Dinâmica ====");
+        System.out.print("Digite o nome completo da classe (ex: Gato): ");
+        String nomeClasse = sc.nextLine();
+
+        System.out.print("Digite o nome (String): ");
+        String nome = sc.nextLine();
+
+        System.out.print("Digite a idade (int): ");
+        int idade = sc.nextInt();
+        sc.nextLine(); // limpar quebra de linha
+
+        Object instancia = ReflexaoUtil.instanciarClasse(nomeClasse, nome, idade);
+        System.out.print("Digite o nome do método para executar (ex: emitirSom): ");
+        String metodo = sc.nextLine();
+
+        ReflexaoUtil.executarMetodoDinamicoComTratamento(instancia, metodo);
+    }
+}
