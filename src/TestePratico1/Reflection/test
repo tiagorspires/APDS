@@ -1,0 +1,36 @@
+import TestePratico1.Reflection.*;
+import java.lang.reflect.*;
+public class Main {
+    public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+        Class<?> pessoa = Class.forName("TestePratico1.Reflection.Pessoa");
+
+        Object object = pessoa.getDeclaredConstructor().newInstance();
+        Method setName = pessoa.getDeclaredMethod("setName",String.class);
+        setName.invoke(object,"João");
+
+        System.out.println(pessoa);
+        System.out.println(object);
+        System.out.println(setName);
+
+        Constructor<?> constructor = pessoa.getDeclaredConstructor(String.class, int.class);
+        Object object2 = constructor.newInstance("John",25);
+        Method getName = pessoa.getDeclaredMethod("getName");
+        Method getIdade = pessoa.getMethod("getIdade");
+        String nome = (String) getName.invoke(object2);
+        int idade = (int) getIdade.invoke(object2);
+
+        System.out.println(nome);
+        System.out.println(idade);
+
+
+        System.out.println("Metodos: ");
+        Method[] methods = pessoa.getDeclaredMethods();
+        for (Method method : methods){
+            System.out.println("- " + method.getName());
+        }
+
+
+
+
+    }
+}
