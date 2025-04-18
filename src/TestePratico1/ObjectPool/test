@@ -1,0 +1,30 @@
+import TestePratico1.ObjectPool.*;
+
+
+public class Main {
+    public static void main(String[] args) {
+        ConexaoPool pool = new ConexaoPool(2);
+
+        Conexao c1 = pool.pegar();
+        System.out.println("Conexão 1 adquirida: " + c1);
+
+        Conexao c2 = pool.pegar();
+        System.out.println("Conexão 2 adquirida: " + c2);
+
+        // Tentar adquirir uma terceira conexão quando o pool está vazio
+        Conexao c3 = pool.pegar();
+        System.out.println("Conexão 3 adquirida: " + c3);
+
+        // Devolver conexões ao pool
+        pool.devolver(c1);
+        System.out.println("Conexão 1 devolvida.");
+
+        pool.devolver(c2);
+        System.out.println("Conexão 2 devolvida.");
+
+        // Tentar devolver uma conexão que não pertence ao pool
+        Conexao c4 = new Conexao(99);
+        pool.devolver(c4);
+        System.out.println("Tentativa de devolver uma conexão externa.");
+    }
+}
