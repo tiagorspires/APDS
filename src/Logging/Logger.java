@@ -1,7 +1,7 @@
 package Logging;
 
 public class Logger {
-    private Device device;
+    private final Device device;
 
     public Logger(Device device) {
         this.device = device;

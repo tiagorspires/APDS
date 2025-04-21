@@ -1,0 +1,28 @@
+
+import TestePratico1.AbstractFactory.*;
+
+public class Main {
+    public static void main(String[] args) {
+        // Simula o SO — pode vir de config ou arg
+        String os = "Windows"; // muda para "Linux" ou "Mac"
+
+        GUIFactory factory;
+
+        switch (os) {
+            case "Windows":
+                factory = new WindowsGUIFactory();
+                break;
+            case "Linux":
+                factory = new LinuxGUIFactory();
+                break;
+            case "Mac":
+                factory = new MacGUIFactory();
+                break;
+            default:
+                throw new IllegalArgumentException("SO não suportado: " + os);
+        }
+
+        Application app = new Application(factory);
+        app.renderUI();
+    }
+}
