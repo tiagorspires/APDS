@@ -1,38 +1,14 @@
-import Prototype.*;
+import FactoryMethod.*;
 
 public class Main {
     public static void main(String[] args) {
-        // Criando protótipos originais
-        ConcretePrototype original1 = new ConcretePrototype("Valor1");
-        SubclassPrototype original2 = new SubclassPrototype("Valor1", "Valor2");
+        FabricaVeiculos fabricaLigeiros = new FabricaVeiculosLigeiros();
+        Veiculo carro = fabricaLigeiros.create();
+        carro.showMotor();
+        fabricaLigeiros.deliver();
 
-        // Clonando os protótipos
-        ConcretePrototype clone1 = (ConcretePrototype) original1.clone();
-        SubclassPrototype clone2 = (SubclassPrototype) original2.clone();
-
-        // Verificando a identidade dos objetos
-        System.out.println("Original1 e Clone1 são o mesmo objeto? " + (original1 == clone1));
-        System.out.println("Original2 e Clone2 são o mesmo objeto? " + (original2 == clone2));
-
-        System.out.println(original1.equals(clone1));
-        System.out.println(original2.equals(clone2));
-
-        // Verificando a igualdade dos valores
-        System.out.println("Original1 field1: " + original1.getField1() +
-                ", Clone1 field1: " + clone1.getField1());
-        System.out.println("Original2 field1: " + original2.getField1() +
-                ", field2: " + original2.getField2());
-        System.out.println("Clone2 field1: " + clone2.getField1() +
-                ", field2: " + clone2.getField2());
-
-        // Modificando o clone para verificar independência
-        clone1.setField1("NovoValor1");
-        clone2.setField2("NovoValor2");
-
-        System.out.println("Após modificação:");
-        System.out.println("Original1 field1: " + original1.getField1());
-        System.out.println("Clone1 field1: " + clone1.getField1());
-        System.out.println("Original2 field2: " + original2.getField2());
-        System.out.println("Clone2 field2: " + clone2.getField2());
+        FabricaVeiculos fabricaPesados = new FabricaVeiculosPesados();
+        Veiculo caminhao = fabricaPesados.create();
+        caminhao.showMotor();
     }
 }
