@@ -1,0 +1,21 @@
+import Builder.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Pizzaiolo pizzaiolo = new Pizzaiolo();
+
+        // Fazendo uma pizza vegetariana
+        PizzaVegetarianaBuilder vegetarianaBuilder = new PizzaVegetarianaBuilder();
+        pizzaiolo.setBuilder(vegetarianaBuilder);
+        pizzaiolo.makePizza();
+        Pizza pizzaVegetariana = vegetarianaBuilder.getResult();
+        System.out.println("Pizza Vegetariana: " + pizzaVegetariana);
+
+        // Fazendo uma pizza pepperoni
+        PizzaPepperoniBuilder pepperoniBuilder = new PizzaPepperoniBuilder();
+        pizzaiolo.setBuilder(pepperoniBuilder);
+        pizzaiolo.makePizza();
+        Pizza pizzaPepperoni = pepperoniBuilder.getResult();
+        System.out.println("Pizza Pepperoni: " + pizzaPepperoni);
+    }
+}
