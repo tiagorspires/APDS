@@ -1,4 +1,4 @@
-package Database;
+package Singleton;
 
 public class DBConnection {
     private static DBConnection instance;
