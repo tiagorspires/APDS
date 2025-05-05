@@ -1,0 +1,38 @@
+import Decorator.*;
+
+
+public class Main {
+    public static void main(String[] args) {
+        // Criando objetos básicos
+        Estampavel camisola = new Camisola();
+        Estampavel caneca = new Caneca();
+
+        // Decorando com estampagem em preto
+        Estampavel camisolaPreto = new EstampagemPreto(camisola);
+        Estampavel canecaPreto = new EstampagemPreto(caneca);
+
+        // Decorando com estampagem RGB
+        Estampavel camisolaRGB = new EstampagemRGB(camisola);
+        Estampavel canecaRGB = new EstampagemRGB(caneca);
+
+        // Combinação: camisola com estampagem RGB e depois preto (não faria sentido prático, mas demonstra o padrão)
+        Estampavel camisolaComplexa = new EstampagemPreto(camisolaRGB);
+
+
+        System.out.println("Produtos simples:");
+        System.out.println(camisola.descrever() + " - Custo: €" + camisola.calcularCusto());
+        System.out.println(caneca.descrever() + " - Custo: €" + caneca.calcularCusto());
+
+        System.out.println("\nProdutos com estampagem em preto:");
+        System.out.println(camisolaPreto.descrever() + " - Custo: €" + camisolaPreto.calcularCusto());
+        System.out.println(canecaPreto.descrever() + " - Custo: €" + canecaPreto.calcularCusto());
+
+        System.out.println("\nProdutos com estampagem colorida (RGB):");
+        System.out.println(camisolaRGB.descrever() + " - Custo: €" + camisolaRGB.calcularCusto());
+        System.out.println(canecaRGB.descrever() + " - Custo: €" + canecaRGB.calcularCusto());
+
+        System.out.println("\nProduto com múltiplas decorações (demonstração):");
+        System.out.println(camisolaComplexa.descrever() + " - Custo: €" + camisolaComplexa.calcularCusto());
+    }
+
+}

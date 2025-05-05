@@ -1,0 +1,35 @@
+import Composite.*;
+
+
+public class Main {
+    public static void main(String[] args) {
+        // Criando os componentes individuais
+        DiagramComponent circle = new Circle();
+        DiagramComponent line = new Line();
+        DiagramComponent triangle = new Triangle();
+
+        // Criando o diagrama composto
+        Diagram diagram = new Diagram();
+        diagram.add(circle);
+        diagram.add(line);
+        diagram.add(triangle);
+
+        // Aplicando uma cor ao diagrama (que se propaga a todos os componentes)
+        System.out.println("Colorindo tudo de vermelho:");
+        diagram.setColor("vermelho");
+        diagram.draw();
+
+        // Aplicando uma cor diferente
+        System.out.println("\nColorindo tudo de azul:");
+        diagram.setColor("azul");
+        diagram.draw();
+
+        // Adicionando um novo componente após a coloração
+        System.out.println("\nAdicionando novo componente e colorindo de verde:");
+        DiagramComponent newCircle = new Circle();
+        diagram.add(newCircle);
+        diagram.setColor("verde");
+        diagram.draw();
+    }
+
+}
