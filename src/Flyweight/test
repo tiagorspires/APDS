@@ -3,12 +3,12 @@ import Flyweight.*;
 
 public class Main {
     public static void main(String[] args) {
-
+        // Criando milhões de árvores, mas com apenas alguns tipos
         Arvore[] arvores = new Arvore[10];
 
-
+        // Preenchendo a floresta
         for (int i = 0; i < arvores.length; i++) {
-
+            // Alterna entre dois tipos de árvores
             if (i % 2 == 0) {
                 arvores[i] = new Arvore(i*10, i*5, 20 + i, "Carvalho", "Marrom", "Rugosa");
             } else {
@@ -16,6 +16,7 @@ public class Main {
             }
         }
 
+        // Renderizando todas as árvores
         for (Arvore arvore : arvores) {
             arvore.renderizar();
         }
