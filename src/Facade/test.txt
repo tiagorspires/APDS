@@ -1,0 +1,11 @@
+import Facade.*;
+
+public class Main {
+    public static void main(String[] args) {
+        ComandoUniversal comando = new ComandoUniversal();
+        comando.verFilmeDVD();
+        comando.verCanalTV(7);
+        comando.ouvirRadio(101.1);
+        comando.desligarTudo();
+    }
+}
