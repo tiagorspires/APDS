@@ -1,5 +1,6 @@
 package Observer;
 
+//Concrete Observer
 public class Customer implements StockObserver {
     private String name;
 

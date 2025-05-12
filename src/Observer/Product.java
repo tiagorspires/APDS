@@ -3,6 +3,7 @@ package Observer;
 import java.util.ArrayList;
 import java.util.List;
 
+//Concrete Observable
 public class Product implements ProductSubject {
     private String name;
     private int stock;
