@@ -1,25 +1,12 @@
 
-import Flyweight.*;
+import Facade.*;
 
 public class Main {
     public static void main(String[] args) {
-
-        Arvore[] arvores = new Arvore[10];
-
-
-        for (int i = 0; i < arvores.length; i++) {
-
-            if (i % 2 == 0) {
-                arvores[i] = new Arvore(i*10, i*5, 20 + i, "Carvalho", "Marrom", "Rugosa");
-            } else {
-                arvores[i] = new Arvore(i*10, i*5, 15 + i, "Pinheiro", "Verde", "Lisa");
-            }
-        }
-
-        for (Arvore arvore : arvores) {
-            arvore.renderizar();
-        }
-
-        System.out.println("\nTotal de tipos de árvores criados: " + FabricaTipoArvore.getTotalTipos());
+        ComandoUniversal comando = new ComandoUniversal();
+        comando.verFilmeDVD();
+        comando.verCanalTV(7);
+        comando.ouvirRadio(101.1);
+        comando.desligarTudo();
     }
 }
